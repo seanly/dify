@@ -6,6 +6,8 @@ services:
       context: ../api
     image: seanly/dify:api-claude3
     restart: always
+    security_opt:
+      - seccomp:unconfined
     environment:
       # Startup mode, 'api' starts the API server.
       MODE: api
@@ -139,6 +141,8 @@ services:
   worker:
     image: seanly/dify:api-claude3
     restart: always
+    security_opt:
+      - seccomp:unconfined
     environment:
       # Startup mode, 'worker' starts the Celery worker for processing the queue.
       MODE: worker
