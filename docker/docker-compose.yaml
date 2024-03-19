@@ -2,7 +2,9 @@ version: '3.1'
 services:
   # API service
   api:
-    image: soulteary/dify-api:claude3
+    build: 
+      context: ../api
+    image: seanly/dify:api-claude3
     restart: always
     environment:
       # Startup mode, 'api' starts the API server.
@@ -135,7 +137,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: soulteary/dify-api:claude3
+    image: seanly/dify:api-claude3
     restart: always
     environment:
       # Startup mode, 'worker' starts the Celery worker for processing the queue.
